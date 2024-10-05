@@ -8,24 +8,24 @@ public class PlayerInputComponent : MonoBehaviour
   [NonSerialized] public PlayerInput playerInput;
   [NonSerialized] public InputActionAsset actions;
 
-  [SerializeField] private float jumpBuffer = 0.075f;
-  public float JumpBuffer => jumpBuffer;
+  // [SerializeField] private float jumpBuffer = 0.075f;
+  // public float JumpBuffer => jumpBuffer;
 
   public Vector2 movementVector2D = Vector2.zero;
   public Vector3 movementVector3D = Vector3.zero;
   public bool controlsEnabled = true;
 
-  private bool dashPressed = false, dashHeld = false, dashReleased = false;
-  private bool jumpPressed = false, jumpHeld = false, jumpReleased = false, jumpBuffered = false;
+  private bool honkPressed = false, honkHeld = false, honkReleased = false;
+  // private bool jumpPressed = false, jumpHeld = false, jumpReleased = false, jumpBuffered = false;
 
-  public bool JumpBuffered => controlsEnabled && jumpBuffered;
-  public bool JumpPressed => controlsEnabled && jumpPressed;
-  public bool JumpHeld => controlsEnabled && jumpHeld;
-  public bool JumpReleased => controlsEnabled && jumpReleased;
+  // public bool JumpBuffered => controlsEnabled && jumpBuffered;
+  // public bool JumpPressed => controlsEnabled && jumpPressed;
+  // public bool JumpHeld => controlsEnabled && jumpHeld;
+  // public bool JumpReleased => controlsEnabled && jumpReleased;
 
-  public bool DashPressed => controlsEnabled && dashPressed;
-  public bool DashHeld => controlsEnabled && dashHeld;
-  public bool DashReleased => controlsEnabled && dashReleased;
+  public bool HonkPressed => controlsEnabled && honkPressed;
+  public bool HonkHeld => controlsEnabled && honkHeld;
+  public bool HonkReleased => controlsEnabled && honkReleased;
 
 
   private void Awake()
@@ -40,24 +40,24 @@ public class PlayerInputComponent : MonoBehaviour
 
   void Update()
   {
-    jumpPressed = actions["Jump"].WasPressedThisFrame();
-    if (jumpPressed)
-    {
-      StartCoroutine(BufferJump());
-      jumpHeld = true;
-    }
+    // jumpPressed = actions["Jump"].WasPressedThisFrame();
+    // if (jumpPressed)
+    // {
+    //   StartCoroutine(BufferJump());
+    //   jumpHeld = true;
+    // }
 
-    jumpReleased = actions["Jump"].WasReleasedThisFrame();
-    if (jumpReleased)
-      jumpHeld = false;
+    // jumpReleased = actions["Jump"].WasReleasedThisFrame();
+    // if (jumpReleased)
+    //   jumpHeld = false;
 
-    dashPressed = actions["Dash"].WasPressedThisFrame();
-    if (dashPressed)
-      dashHeld = true;
+    honkPressed = actions["Honk"].WasPressedThisFrame();
+    if (honkPressed)
+      honkHeld = true;
 
-    dashReleased = actions["Dash"].WasReleasedThisFrame();
-    if (dashReleased)
-      dashHeld = false;
+    honkReleased = actions["Honk"].WasReleasedThisFrame();
+    if (honkReleased)
+      honkHeld = false;
 
 
   }
@@ -69,10 +69,10 @@ public class PlayerInputComponent : MonoBehaviour
     movementVector3D = new Vector3(movementVector.x, 0, movementVector.y);
   }
 
-  private IEnumerator BufferJump()
-  {
-    jumpBuffered = true;
-    yield return new WaitForSeconds(JumpBuffer);
-    jumpBuffered = false;
-  }
+  // private IEnumerator BufferJump()
+  // {
+  //   jumpBuffered = true;
+  //   yield return new WaitForSeconds(JumpBuffer);
+  //   jumpBuffered = false;
+  // }
 }

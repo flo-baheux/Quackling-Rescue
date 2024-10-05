@@ -3,22 +3,24 @@ using UnityEngine;
 
 namespace Player
 {
-  public class Player : MonoBehaviour
+  public class Player : FollowableByDucklingEntity
+
   {
     [Header("Movements")]
     public float gravityValue = 8f;
-    public float jumpHeight = 1f;
+    // public float jumpHeight = 1f;
     public float speed = 2f;
+
+    [Header("Gameplay")]
+    public float honkRadius = 20f;
     // [SerializeField] private float dashStrength = 40f;
     // public float DashStrength => dashStrength;
 
     // Components
-
     [Header("Components")]
     [NonSerialized] public CharacterController characterController;
     public PlayerStateComponent state { get; private set; }
     public PlayerInputComponent input { get; private set; }
-    private Collider mainCollider;
 
     public Vector3 playerVelocity;
     // Gameplay Manager
@@ -28,13 +30,8 @@ namespace Player
     {
       state = GetComponent<PlayerStateComponent>();
       input = GetComponent<PlayerInputComponent>();
-      mainCollider = GetComponent<Collider>();
       characterController = GetComponent<CharacterController>();
-      gameplayManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-    void Start()
-    {
+      // gameplayManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -42,21 +39,20 @@ namespace Player
       // Don't fall when grounded
       bool isGrounded = IsGrounded3D();
       if (isGrounded && playerVelocity.y < 0f)
-        playerVelocity.y = 0.0f;
+        playerVelocity.y = -0.01f;
       else if (!isGrounded)
         playerVelocity.y += gravityValue * Time.deltaTime;
 
-      if (input.movementVector3D != Vector3.zero)
-        gameObject.transform.forward = input.movementVector3D;
-
-
       if (input.controlsEnabled)
+      {
         characterController.Move(input.movementVector3D * Time.deltaTime * speed);
-    }
+        if (input.HonkPressed)
+          Honk();
+      }
 
-    void LateUpdate()
-    {
+      transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
       characterController.Move(playerVelocity * Time.deltaTime);
+
     }
 
     void FixedUpdate()
@@ -106,6 +102,16 @@ namespace Player
       //   state.TransitionToState(State.DEAD);
       // if (other.CompareTag("LevelEnd"))
       //   gameplayManager.StartNextLevel();
+    }
+
+    public void Honk()
+    {
+      foreach (Duckling existingDuckling in Duckling.entities)
+      {
+        var distance = (transform.position - existingDuckling.transform.position).magnitude;
+        if (distance < honkRadius)
+          existingDuckling.AcquirePlayerTarget();
+      }
     }
   }
 }

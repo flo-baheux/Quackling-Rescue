@@ -1,3 +1,4 @@
+using System.Collections;
 using Cinemachine;
 using UnityEngine;
 
@@ -6,13 +7,13 @@ namespace Player
   public class PlayerDisplayComponent : MonoBehaviour
   {
     [SerializeField] private TrailRenderer dashTrailRenderer;
-    [SerializeField] private float screenshakeStrength = 0.2f;
+    [SerializeField] private float screenshakeStrength = 0.4f;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private CinemachineImpulseSource cameraImpulseSource;
 
-    [SerializeField] private Sprite frontSprite, backSprite;
+    [SerializeField] private Sprite noHonkSprite, honkSprite;
 
     private Player Player;
 
@@ -37,8 +38,8 @@ namespace Player
       else if (spriteRenderer && spriteRenderer.flipX == true && Player.input.movementVector2D.x > 0)
         spriteRenderer.flipX = false;
 
-      if (spriteRenderer)
-        spriteRenderer.sprite = Player.input.movementVector2D.y <= 0 ? frontSprite : backSprite;
+      if (Player.input.HonkPressed)
+        StartCoroutine(HandleHonk());
 
       // animator.SetFloat("xMovementVector", Player.input.movementVector.x);
       // animator.SetFloat("yMovementVector", Player.input.movementVector.y);
@@ -50,8 +51,8 @@ namespace Player
 
     // private void HandleDashMovementStart()
     // {
-    //   cameraImpulseSource.GenerateImpulse(screenshakeStrength);
     //   dashTrailRenderer.emitting = true;
+    //   cameraImpulseSource.GenerateImpulse(screenshakeStrength);
     // }
 
     // private void HandleExitDashingState(Player p)
@@ -59,5 +60,13 @@ namespace Player
     //   animator.ResetTrigger("Dash");
     //   dashTrailRenderer.emitting = false;
     // }
+
+    private IEnumerator HandleHonk()
+    {
+      cameraImpulseSource.GenerateImpulse(screenshakeStrength);
+      spriteRenderer.sprite = honkSprite;
+      yield return new WaitForSeconds(0.5f);
+      spriteRenderer.sprite = noHonkSprite;
+    }
   }
 }

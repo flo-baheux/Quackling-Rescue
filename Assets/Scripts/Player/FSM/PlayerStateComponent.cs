@@ -8,9 +8,6 @@ namespace Player
     private Player Player;
 
     public PlayerStandingState standingState { get; private set; }
-    public PlayerJumpingState jumpingState { get; private set; }
-    public PlayerFallingState fallingState { get; private set; }
-    public PlayerDeadState deadState { get; private set; }
 
     private Dictionary<State, PlayerState> states;
 
@@ -22,16 +19,9 @@ namespace Player
     {
       Player = GetComponent<Player>();
       standingState = new PlayerStandingState(Player);
-      jumpingState = new PlayerJumpingState(Player);
-      fallingState = new PlayerFallingState(Player);
-      deadState = new PlayerDeadState(Player);
 
       states = new Dictionary<State, PlayerState>() {
       {State.STANDING, standingState},
-      {State.JUMPING, jumpingState},
-      {State.FALLING, fallingState},
-
-      {State.DEAD, deadState},
     };
 
       currentState = standingState;

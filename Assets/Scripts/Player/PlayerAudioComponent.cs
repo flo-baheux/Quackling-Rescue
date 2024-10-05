@@ -7,7 +7,7 @@ namespace Player
 
   public class PlayerAudioComponent : MonoBehaviour
   {
-    public AudioClip jumpSound;
+    public AudioClip honkSound;
     // public List<AudioClip> dashSounds;
     private AudioSource SFXAudioSource;
     private Player player;
@@ -20,10 +20,15 @@ namespace Player
 
     void Start()
     {
-      player.state.jumpingState.OnEnter += HandleJump;
     }
 
-    public void HandleJump(Player p) => SFXAudioSource.PlayOneShot(jumpSound);
+    void Update()
+    {
+      if (player.input.HonkPressed)
+        HandleHonk(null);
+    }
+
+    public void HandleHonk(Player p) => SFXAudioSource.PlayOneShot(honkSound);
 
     // public void PlayDashSound() => SFXAudioSource.PlayOneShot(dashSounds.OrderBy(n => Guid.NewGuid()).ToArray()[0]);
   }

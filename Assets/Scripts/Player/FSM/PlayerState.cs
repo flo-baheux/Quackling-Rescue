@@ -4,10 +4,7 @@ namespace Player
 {
   public enum State
   {
-    DEAD,
-    STANDING,
-    JUMPING,
-    FALLING
+    STANDING
   };
 
   public abstract class PlayerState

@@ -13,12 +13,6 @@ namespace Player
 
     public override State? CustomUpdate()
     {
-      if (!Player.IsGrounded3D())
-        return State.FALLING;
-
-      if (Player.input.JumpBuffered || Player.input.JumpPressed)
-        return State.JUMPING;
-
       return base.CustomUpdate();
     }
   }
