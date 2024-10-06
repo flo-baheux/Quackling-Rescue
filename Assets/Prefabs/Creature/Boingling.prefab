@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 246032486646817021, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1513048142245515986, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92,6 +92,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 40ad30a18019e734f884a87001d51682, type: 3}
+    - target: {fileID: 7825717989120851109, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825717989120851109, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5cffc8298e4f2f4e854ea0116bb8f73, type: 2}
     - target: {fileID: 9021512999733412953, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_Name
       value: Boingling

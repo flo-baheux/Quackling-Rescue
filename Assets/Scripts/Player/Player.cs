@@ -113,5 +113,11 @@ namespace Player
           existingDuckling.AcquirePlayerTarget();
       }
     }
+
+    void OnDrawGizmos()
+    {
+      Gizmos.color = new Color(200, 200, 0, 0.3f);
+      Gizmos.DrawSphere(transform.position, honkRadius);
+    }
   }
 }

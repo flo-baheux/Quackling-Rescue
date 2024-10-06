@@ -65,11 +65,4 @@ public class DucklingDetector : MonoBehaviour
       CurrentCountIn = Physics.BoxCastNonAlloc(transform.position, Vector3.one * 4, Vector3.up, results, Quaternion.identity, 1f, LayerMask.GetMask("Duckling"));
     }
   }
-
-  void OnDrawGizmosSelected()
-  {
-    // Draw a semitransparent red cube at the transforms position
-    Gizmos.color = new Color(1, 0, 0, 0.5f);
-    Gizmos.DrawCube(transform.position, Vector3.one * 8);
-  }
 }

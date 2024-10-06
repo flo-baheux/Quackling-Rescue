@@ -14,7 +14,6 @@ public class Duckling : MonoBehaviour
 
   public float speed = 1f;
 
-  public float funEntityDetectionRadius = 30f;
   [SerializeField] private float defaultFocusOnCharacterTimer = 5f;
   private float currentFocusOnCharacterTimer = 0f;
 
@@ -95,11 +94,11 @@ public class Duckling : MonoBehaviour
       // Find closest fun stuff within range
 
       FunEntity funTarget = null;
-      float maxDist = funEntityDetectionRadius;
+      float maxDist = float.PositiveInfinity;
       foreach (var funEntity in FunEntity.entities)
       {
         var distance = (transform.position - funEntity.transform.position).magnitude;
-        if (distance < maxDist)
+        if (distance < maxDist && distance < funEntity.attentionCatchingDistance)
         {
           funTarget = funEntity;
           maxDist = distance;
@@ -137,10 +136,4 @@ public class Duckling : MonoBehaviour
   }
 }
 
-/*
-Okay so the ducklings are chasing but when following as duck, if the trigger
-happens again they end up following the last one chasing, ending up in a loop.
-
-Can it be solved by "if already currently chasing fun stuff and being first, do nothing"?
-*/
 
