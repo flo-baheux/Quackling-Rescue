@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Duckling : MonoBehaviour
@@ -8,8 +9,7 @@ public class Duckling : MonoBehaviour
 
   [NonSerialized] public static readonly HashSet<Duckling> entities = new HashSet<Duckling>();
 
-  private bool following = false;
-  FollowableByDucklingEntity currentlyFollowing = null;
+  private FollowableByDucklingEntity mainTarget = null;
   private GameObject target = null;
 
   public float speed = 1f;
@@ -21,10 +21,12 @@ public class Duckling : MonoBehaviour
 
   private float initialY = 0;
 
-  private GameObject playerGameObject;
   private Animator animator;
   private SpriteRenderer spriteRenderer;
   private bool isMoving = false;
+  private Vector3 fakeGravity = new Vector3(0, -0.001f, 0);
+
+  private bool isSwitchingTarget = false;
 
   void Awake()
   {
@@ -45,37 +47,22 @@ public class Duckling : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (!playerGameObject)
-      playerGameObject = GameObject.FindWithTag("Player");
+    MoveTowardsTarget();
 
-    if (!following)
-    {
-      AcquirePlayerTarget();
-      following = true;
-    }
-    else
-      MoveTowardsTarget();
-
-    transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
 
     spriteRenderer.flipX = characterController.velocity.x < 0;
     animator.SetBool("IsMoving", isMoving);
-  }
-
-  public void AcquirePlayerTarget()
-  {
-    if (playerGameObject)
-    {
-      Player.Player p = playerGameObject.GetComponent<Player.Player>();
-      SwitchTarget(p);
-      currentFocusOnCharacterTimer = defaultFocusOnCharacterTimer;
-    }
+    characterController.Move(fakeGravity * Time.deltaTime);
+    transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
   }
 
   void MoveTowardsTarget()
   {
+    if (!target)
+      return;
     Vector3 offset = target.transform.position - transform.position;
-    if (offset.magnitude >= 2f)
+
+    if (offset.magnitude >= 3f)
     {
       characterController.Move(speed * Time.deltaTime * offset.normalized);
       isMoving = true;
@@ -89,7 +76,8 @@ public class Duckling : MonoBehaviour
     while (true)
     {
       yield return null;
-      if (currentFocusOnCharacterTimer > 0)
+
+      if (isSwitchingTarget || currentFocusOnCharacterTimer > 0)
         continue;
       // Find closest fun stuff within range
 
@@ -97,29 +85,42 @@ public class Duckling : MonoBehaviour
       float maxDist = float.PositiveInfinity;
       foreach (var funEntity in FunEntity.entities)
       {
+        if (mainTarget && funEntity.gameObject == mainTarget.gameObject)
+          continue;
         var distance = (transform.position - funEntity.transform.position).magnitude;
         if (distance < maxDist && distance < funEntity.attentionCatchingDistance)
         {
           funTarget = funEntity;
           maxDist = distance;
         }
-        yield return null;
       }
 
       if (funTarget)
-      {
-        Debug.Log($"I am {gameObject.name} and I'm switching to fun target {funTarget}.");
-        SwitchTarget(funTarget);
-      }
+        SwitchTarget(funTarget.gameObject);
     }
   }
 
-  private void SwitchTarget(FollowableByDucklingEntity followableEntity)
+  public void SwitchTarget(GameObject newTarget)
   {
-    if (currentlyFollowing)
-      currentlyFollowing.Unfollow(this);
-    currentlyFollowing = followableEntity;
-    target = followableEntity.Follow(this);
+    isSwitchingTarget = true;
+    if (newTarget == mainTarget)
+    {
+      Debug.LogWarning("Trying to switch target to main target - abort");
+      isSwitchingTarget = false;
+      return;
+    }
+
+    if (newTarget.TryGetComponent(out FollowableByDucklingEntity newFollowableEntity))
+    {
+      if (mainTarget)
+        mainTarget.Unfollow(this);
+      mainTarget = newFollowableEntity;
+      target = newFollowableEntity.Follow(this);
+      if (newTarget.TryGetComponent<Player>(out _))
+        currentFocusOnCharacterTimer = defaultFocusOnCharacterTimer;
+    }
+    isSwitchingTarget = false;
+    return;
   }
 
   IEnumerator FocusManager()

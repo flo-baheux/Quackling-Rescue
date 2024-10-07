@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
   // CHARACTERS
   [SerializeField] private GameObject playerPrefab;
-  [NonSerialized] public Player.Player player;
+  [NonSerialized] public Player player;
 
   // CONTROLLERS
   private MainAudioController audioController;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
   private void SetupForLevel()
   {
     GameObject spawnPoint = GameObject.FindGameObjectWithTag("Spawn");
-    player = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation).GetComponent<Player.Player>();
+    player = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation).GetComponent<Player>();
     vcam = FindFirstObjectByType<CinemachineVirtualCamera>();
     vcam.Follow = player.transform;
     vcam.LookAt = player.transform;
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
   }
 
 
-  void HandlePlayerDeath(Player.Player player)
+  void HandlePlayerDeath(Player player)
   {
     // player.state.deadState.OnEnter -= HandlePlayerDeath;
     // Destroy(player.gameObject);

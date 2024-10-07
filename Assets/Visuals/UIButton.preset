@@ -50,19 +50,19 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Transition
-    value: 1
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Colors.m_NormalColor.r
-    value: 0.8679245
+    value: 0.8962264
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Colors.m_NormalColor.g
-    value: 0.755819
+    value: 0.8922543
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Colors.m_NormalColor.b
-    value: 0.28248486
+    value: 0.875089
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Colors.m_NormalColor.a
@@ -143,15 +143,15 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_SpriteState.m_HighlightedSprite
     value: 
-    objectReference: {fileID: 706002863, guid: 81e38e028c680804d8a3149fdd791106, type: 3}
+    objectReference: {fileID: 80400640, guid: a955a4d4b364c1446a71afb94caed330, type: 3}
   - target: {fileID: 0}
     propertyPath: m_SpriteState.m_PressedSprite
     value: 
-    objectReference: {fileID: 1868480327, guid: 81e38e028c680804d8a3149fdd791106, type: 3}
+    objectReference: {fileID: -850158900, guid: a955a4d4b364c1446a71afb94caed330, type: 3}
   - target: {fileID: 0}
     propertyPath: m_SpriteState.m_SelectedSprite
     value: 
-    objectReference: {fileID: 706002863, guid: 81e38e028c680804d8a3149fdd791106, type: 3}
+    objectReference: {fileID: -901186214, guid: a955a4d4b364c1446a71afb94caed330, type: 3}
   - target: {fileID: 0}
     propertyPath: m_SpriteState.m_DisabledSprite
     value: 
