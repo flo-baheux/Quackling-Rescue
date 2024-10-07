@@ -103,7 +103,7 @@ public class Duckling : MonoBehaviour
   public void SwitchTarget(GameObject newTarget)
   {
     isSwitchingTarget = true;
-    if (newTarget == mainTarget)
+    if (mainTarget && newTarget == mainTarget.gameObject)
     {
       Debug.LogWarning("Trying to switch target to main target - abort");
       isSwitchingTarget = false;

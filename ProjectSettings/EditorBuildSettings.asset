@@ -5,17 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ManagerScene.unity
     guid: ce1fde5077d4afa4aa282dfd744d00ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 916c681e637789e448abcfc746f590e7
   - enabled: 1
     path: Assets/Scenes/GameScene1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/IngameHUD.unity
     guid: c50125fea11304740873c625946280ef
+  - enabled: 0
+    path: Assets/Scenes/QuentinGameScene.unity
+    guid: ef33906ced4de094f9ffc70fdb6d5189
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d8546b6562e975a4498a692eba8a80de, type: 2}

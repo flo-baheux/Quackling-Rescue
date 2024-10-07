@@ -17,8 +17,6 @@ public class UIDisplayComponent : MonoBehaviour
   void Start()
   {
     honkFill.fillAmount = 1;
-    int a = Duckling.entities.Count;
-    int b = player.currentlyFollowingCount;
   }
 
   void Update()
