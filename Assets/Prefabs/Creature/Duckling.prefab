@@ -40,13 +40,17 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2069830544156917909, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2587498092491619832, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_text
       value: Duckling
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: -187.09834
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -54,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 323.8641
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,15 +66,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -96,13 +100,17 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6454961363938252904, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9021512999733412953, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_Name
       value: Duckling
       objectReference: {fileID: 0}
     - target: {fileID: 9021512999733412953, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

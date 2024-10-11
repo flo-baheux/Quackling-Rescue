@@ -257,7 +257,7 @@ MonoBehaviour:
   gravityValue: -30
   speed: 15
   honkRadius: 10
-  honkCooldown: 5
+  honkCooldown: 3
   playerVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &6351687127592781107
 MonoBehaviour:

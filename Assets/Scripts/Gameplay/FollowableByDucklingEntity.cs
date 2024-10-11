@@ -12,9 +12,7 @@ public class FollowableByDucklingEntity : MonoBehaviour
 
   public GameObject Follow(Duckling duckling)
   {
-    Duckling? lastDucklingBeforeInsert = GetLast();
-    if (mustBeFollowedDuckly)
-      Debug.Log($"{duckling.name}: should follow {lastDucklingBeforeInsert} (GetLast before insert)");
+    Duckling? lastDucklingBeforeInsert = ducklings.Last?.Value;
     ducklings.AddLast(duckling);
     if (mustBeFollowedDuckly)
       return lastDucklingBeforeInsert ? lastDucklingBeforeInsert.gameObject : gameObject;
@@ -24,31 +22,25 @@ public class FollowableByDucklingEntity : MonoBehaviour
 
   public void Unfollow(Duckling duckling)
   {
-    LinkedListNode<Duckling> node = ducklings.Last;
-    while (node != null && node.Value != duckling)
-    {
-      Duckling ducklingToRemove = node.Value;
-      node = node.Previous;
-      ducklings.Remove(ducklingToRemove);
-    }
-    ducklings.Remove(duckling);
-  }
+    LinkedListNode<Duckling> node = ducklings.Find(duckling);
 
-  private Duckling? GetLast()
-  {
-    return ducklings.Last?.Value;
+    if (node.Next != null)
+      node.Next.Value.target = node.Previous != null ? node.Previous.Value.gameObject : gameObject;
+
+    ducklings.Remove(duckling);
   }
 
   public void DebugList()
   {
     LinkedListNode<Duckling> node = ducklings.First;
     int index = 0;
-    Debug.Log($"[{index}] - {node.Value.gameObject.name}");
-    while (node != ducklings.Last)
+    string str = "";
+    while (node != null)
     {
+      str += $"[{index}] - {node.Value.gameObject.name}\n";
       node = node.Next;
       index++;
-      Debug.Log($"[{index}] - {node.Value.gameObject.name}");
     }
+    Debug.Log(str);
   }
 }

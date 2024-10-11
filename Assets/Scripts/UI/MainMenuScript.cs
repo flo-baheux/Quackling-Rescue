@@ -39,7 +39,7 @@ public class MainMenuScript : MonoBehaviour
   public void Play()
   {
     OnUIActionPlayClicSound();
-    gameManager.GoToGameScene("GameScene1");
+    gameManager.GoToGameScene("MainGameScene");
   }
 
   public void OpenSettings()

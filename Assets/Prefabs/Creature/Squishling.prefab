@@ -48,13 +48,17 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2069830544156917909, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2587498092491619832, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_text
       value: Squishling
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15
+      value: -305
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 335
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalRotation.w

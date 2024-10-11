@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.37626222, g: 0.32777813, b: 0.597202, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4506788384543248759, guid: d0e32314a5c89ae4293256d325332a6c, type: 3}
-  menuBGM: {fileID: 0}
-  ingameBGM: {fileID: 0}
+  menuBGM: {fileID: 8300000, guid: d394e5396ec046941ba8b977b68fab34, type: 3}
+  ingameBGM: {fileID: 8300000, guid: d394e5396ec046941ba8b977b68fab34, type: 3}
 --- !u!114 &25226259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,11 +206,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8497284741435959899, guid: a33685be5cc7305438886664c577e62c, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d394e5396ec046941ba8b977b68fab34, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

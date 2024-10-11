@@ -62,8 +62,7 @@ public class DucklingDetector : MonoBehaviour
     while (!hasBeenTriggered)
     {
       yield return waitTimer;
-      // Divided by 2 because ducklings have two colliders
-      CurrentCountIn = Physics.BoxCastNonAlloc(transform.position, Vector3.one * 4, Vector3.up, results, Quaternion.identity, 1f, LayerMask.GetMask("Duckling"));
+      CurrentCountIn = Physics.BoxCastNonAlloc(transform.position, Vector3.one * 5, Vector3.up, results, Quaternion.identity, 1f, LayerMask.GetMask("Duckling"));
     }
   }
 }

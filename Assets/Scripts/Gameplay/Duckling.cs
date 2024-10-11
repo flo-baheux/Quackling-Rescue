@@ -10,9 +10,9 @@ public class Duckling : MonoBehaviour
   [NonSerialized] public static readonly HashSet<Duckling> entities = new HashSet<Duckling>();
 
   private FollowableByDucklingEntity mainTarget = null;
-  private GameObject target = null;
+  public GameObject target = null;
 
-  public float speed = 1f;
+  public float speed = 1.5f;
 
   [SerializeField] private float defaultFocusOnCharacterTimer = 5f;
   private float currentFocusOnCharacterTimer = 0f;
@@ -62,7 +62,7 @@ public class Duckling : MonoBehaviour
       return;
     Vector3 offset = target.transform.position - transform.position;
 
-    if (offset.magnitude >= 3f)
+    if (offset.magnitude >= 1.5f)
     {
       characterController.Move(speed * Time.deltaTime * offset.normalized);
       isMoving = true;
@@ -105,7 +105,7 @@ public class Duckling : MonoBehaviour
     isSwitchingTarget = true;
     if (mainTarget && newTarget == mainTarget.gameObject)
     {
-      Debug.LogWarning("Trying to switch target to main target - abort");
+      // Debug.LogWarning("Trying to switch target to main target - abort");
       isSwitchingTarget = false;
       return;
     }

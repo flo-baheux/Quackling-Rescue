@@ -44,13 +44,17 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2069830544156917909, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2587498092491619832, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_text
       value: Batling
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9
+      value: -400
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 339
       objectReference: {fileID: 0}
     - target: {fileID: 4635349642632908694, guid: c608d81cec8652940b91170b2f79f7f6, type: 3}
       propertyPath: m_LocalRotation.w

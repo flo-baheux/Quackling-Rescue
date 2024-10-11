@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
   public void GoToMainMenu()
   {
     gameSceneManager.LoadMainMenu();
-    audioController.PlayBGM(menuBGM);
+    // audioController.PlayBGM(menuBGM);
   }
 
   public void GoToGameScene(string sceneName)
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
       gameStarted = true;
 
     gameSceneManager.LoadGameScene(sceneName, SetupForLevel);
-    audioController.PlayBGM(ingameBGM);
+    // audioController.PlayBGM(ingameBGM);
   }
 
   private void SetupForLevel()
