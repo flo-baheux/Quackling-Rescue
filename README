@@ -1,7 +1,0 @@
-To setup everything as expected:
-
-Go in the Assets/Scenes folder
-Put all scenes into the hierarchy (by default, panel on the left of the editor)
-right click on each one but "ManagerScene" and do "Unload scene"
-
-Now you should be able to press Play (by default, middle-top of the editor).
